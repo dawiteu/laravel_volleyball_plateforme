@@ -15,6 +15,14 @@ class CreateJoueursTable extends Migration
     {
         Schema::create('joueurs', function (Blueprint $table) {
             $table->id();
+            $table->string('nom');
+            $table->string('prenom');
+            $table->integer('age'); 
+            $table->bigInteger('numero'); 
+            $table->string('pays'); 
+            $table->foreignId('genre_id')->constrained(); 
+            $table->foreignId('role_id')->constrained(); 
+            $table->foreignId('equipe_id')->constrained();
             $table->timestamps();
         });
     }

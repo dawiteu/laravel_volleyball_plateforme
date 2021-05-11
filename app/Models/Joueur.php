@@ -12,4 +12,16 @@ class Joueur extends Model
     public function photo(){
         return $this->belongsTo(Photo::class); 
     }
+
+    public function genre(){
+        return $this->belongsTo(Genre::class); 
+    }
+
+    public function role(){
+        return $this->belongsTo(Role::class); 
+    }
+
+    public function equipe(){
+        return $this->belongsTo(Equipe::class); 
+    }
 }

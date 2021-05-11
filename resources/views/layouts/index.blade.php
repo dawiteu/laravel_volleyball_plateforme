@@ -11,7 +11,7 @@
 
     <div class="container my-5">
 
-        @include('partials.nav')
+        {{-- @include('partials.nav') --}}
 
         @yield('content')
     </div>
