@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\JoueurRequest;
 use App\Models\Equipe;
+use App\Models\Genre;
 use App\Models\Joueur;
+use App\Models\Role;
 use Illuminate\Http\Request;
 
 class JoueurController extends Controller
@@ -26,7 +29,11 @@ class JoueurController extends Controller
      */
     public function create()
     {
-        return view('admin.pages.jrs.create'); 
+        $genres = Genre::all();
+        $roles = Role::all(); 
+        $eqs = Equipe::all(); 
+
+        return view('admin.pages.jrs.create', compact('genres','roles', 'eqs')); 
     }
 
     /**
@@ -35,9 +42,26 @@ class JoueurController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(JoueurRequest $request)
     {
-        
+        $joueur = new Joueur(); 
+
+        $joueur->nom = $request->nom;
+        $joueur->prenom = $request->prenom;
+        $joueur->age = $request->age;
+        $joueur->numero = $request->numero;
+        $joueur->pays = $request->pays;
+        $joueur->genre_id = $request->genre;
+        $joueur->role_id = $request->role;
+
+        //if($request->equipe_id != 0){
+            $joueur->equipe_id = $request->equipe; // equipe
+        //}else{
+        //    $joueur->equipe_id = 0; 
+        //}
+
+        $joueur->save(); 
+        return redirect()->route('joueur.index')->with('success','joueur enrigistreeeee'); 
     }
 
     /**
@@ -83,6 +107,6 @@ class JoueurController extends Controller
     public function destroy(Joueur $joueur)
     {
         $joueur->delete();
-        return redirect()->view('admin.pages.jrs.index');
+        return redirect()->route('joueurs.index');
     }
 }
