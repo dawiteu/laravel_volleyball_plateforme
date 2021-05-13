@@ -4,15 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\EquipeRequest;
 use App\Models\Continent;
-use App\Models\Equipe; 
+use App\Models\Equipe;
+use App\Models\Joueur;
 use Illuminate\Http\Request;
 
 class EquipeController extends Controller
 {
     public function index(){
         $eqs = Equipe::all(); 
-
-        return view('admin.pages.eqs.index', compact('eqs')); 
+        $sansequipe = Joueur::all()->where('equipe_id', 1); 
+        return view('admin.pages.eqs.index', compact('eqs', 'sansequipe')); 
     }
 
 
