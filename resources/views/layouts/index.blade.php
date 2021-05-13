@@ -8,7 +8,11 @@
     <link rel="stylesheet" href={{asset('css/app.css')}}>
 </head>
 <body>
-
+    <div class="container mx-auto text-center">
+        @include('layouts.flash')
+    </div>
+    
+    
     <div class="container my-5">
 
         {{-- @include('partials.nav') --}}

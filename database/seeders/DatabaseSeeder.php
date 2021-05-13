@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Continent;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -15,7 +16,8 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             GenreSeeder::class,
-            RoleSeeder::class
+            RoleSeeder::class,
+            ContinentSeeder::class
         ]);
     }
 }

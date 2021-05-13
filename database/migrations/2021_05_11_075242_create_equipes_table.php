@@ -18,11 +18,11 @@ class CreateEquipesTable extends Migration
             $table->string('nom'); 
             $table->string('ville'); // ville -- pays  
             $table->string('pays');  /// ville -- pays 
-            $table->integer('max'); // max jouerurs; 
-            $table->integer('ATT'); 
-            $table->integer('CT'); 
-            $table->integer('DC');
-            $table->integer('RP'); 
+            $table->integer('max')->default('6'); // max jouerurs; 
+            $table->integer('ATT')->default('0'); // 0 psq il y a pas a la creation
+            $table->integer('CT')->default('0');; 
+            $table->integer('DC')->default('0');;
+            $table->integer('RP')->default('0');; 
             $table->foreignId('continent_id')->constrained(); 
             $table->timestamps();
         });

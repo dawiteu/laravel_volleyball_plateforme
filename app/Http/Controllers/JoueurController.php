@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Equipe;
 use App\Models\Joueur;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,8 @@ class JoueurController extends Controller
      */
     public function index()
     {
-        //
+        $jrs = Joueur::all();
+        return view('admin.pages.jrs.index', compact('jrs')); 
     }
 
     /**
@@ -24,7 +26,7 @@ class JoueurController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.pages.jrs.create'); 
     }
 
     /**
@@ -35,7 +37,7 @@ class JoueurController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**
@@ -46,7 +48,7 @@ class JoueurController extends Controller
      */
     public function show(Joueur $joueur)
     {
-        //
+        return view('admin.pages.jrs.show', compact('joueur')); 
     }
 
     /**
@@ -57,7 +59,7 @@ class JoueurController extends Controller
      */
     public function edit(Joueur $joueur)
     {
-        //
+        return view('admin.pages.jrs.edit', compact('joueur')); 
     }
 
     /**
@@ -80,6 +82,7 @@ class JoueurController extends Controller
      */
     public function destroy(Joueur $joueur)
     {
-        //
+        $joueur->delete();
+        return redirect()->view('admin.pages.jrs.index');
     }
 }
